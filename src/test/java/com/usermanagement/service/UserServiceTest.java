@@ -1,6 +1,7 @@
 package com.usermanagement.service;
 
 
+import com.commonlib.config.LiquibaseConfig;
 import com.usermanagement.domain.entity.User;
 import com.usermanagement.domain.mapper.UserMapper;
 import com.usermanagement.domain.repository.UserRepository;
@@ -9,8 +10,15 @@ import com.commonlib.service.dto.UserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebMergedContextConfiguration;
 
 import java.util.Optional;
 
@@ -19,7 +27,9 @@ import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
-//@WebMvcTest(controllers = UserResource.class)
+//@EnableAutoConfiguration(exclude= {DataSourceAutoConfiguration.class})
+@ActiveProfiles("test")
+//@WebMvcTest(controllers = UserResource.classFlywayAutoConfiguration)
 public class UserServiceTest {
 
     @MockBean
