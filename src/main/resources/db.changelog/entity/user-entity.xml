@@ -14,7 +14,7 @@
     </changeSet>
 
     <changeSet id="user-entity-1" author="Ahmad Abo AlShamat">
-        <createTable tableName="user"  tablespace="${tablespace}">
+        <createTable tableName="user"   >
             <column name="id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
