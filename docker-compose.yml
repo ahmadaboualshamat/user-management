@@ -15,7 +15,7 @@ services:
       - E:\docker_volumes\postgres:/var/lib/postgresql/data
   user-management-app:
 #    image: user-management
-#    container_name: user-management-container
+    container_name: user-management-container
     build: .
     ports:
       - "8080:8080"
