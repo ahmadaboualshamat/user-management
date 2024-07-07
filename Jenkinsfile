@@ -30,7 +30,7 @@ pipeline {
                 }
             }
         }
-        stage('Build Push Image') {
+        stage('Push Image') {
             steps{
                 script{
                     bat 'docker push ahmadaboualshamat/user-management'
