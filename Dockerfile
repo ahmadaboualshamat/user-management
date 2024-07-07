@@ -13,6 +13,7 @@ FROM openjdk:17
 #WORKDIR /app
 EXPOSE 8080
 ADD target/user-management.jar user-management.jar
+#ENTRYPOINT ["java","-Dspring.profiles.active=dev", "-jar", "/user-management.jar"]
 ENTRYPOINT ["java", "-jar", "/user-management.jar"]
 #CMD ["java", "-jar", "/user-management.jar"]
 #ENTRYPOINT ["java", "-jar", "/user-management.jar --spring.profiles.active=test"]
