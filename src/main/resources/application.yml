@@ -1,4 +1,6 @@
 spring:
+#  profiles:
+#    active: dev
   application:
     name: user-management
   liquibase:
@@ -8,10 +10,10 @@ spring:
     database-change-log-table: DB_CHANGE_LOG
     database-change-log-lock-table: DB_CHANGE_LOG_LOCK
     drop-first: false
-  datasource:
-    url: jdbc:postgresql://localhost:5435/com_user_management_docker
-    username: com_user_management_docker
-    password: 123456
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/com_user_management_docker
+#    username: postgres
+#    password: 1234567
   jpa:
     show-sql: true
     properties:
@@ -45,4 +47,3 @@ logging:
 
 #server:
 #  port: 8080
-#spring.profiles.active: test
