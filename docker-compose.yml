@@ -11,31 +11,30 @@ services:
 #      POSTGRES_USER_NAME: com_user_management_docker
       POSTGRES_PASSWORD: 1234567
       POSTGRES_DB: com_user_management_docker
-      DATABASE_HOST: container_name
     volumes:
       - E:\docker_volumes\postgres:/var/lib/postgresql/data
-#  user-management-app:
-##    image: ahmadaboualshamat/user-management
-#    container_name: user-management-container
-#    build: .
-#    ports:
-#      - "8080:8080"
-#    deploy:
-#      replicas: 1
-##    expose:
-##      - 8080
-#    restart: always
-#    depends_on:
-#      - db
-#    environment:
-##      spring.datasource.url: jdbc:postgresql://db:5435/com_user_management3?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
-##      spring.datasource.username: com_user_management3
-##      spring.datasource.password: 123456
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/com_user_management_docker
-#      SPRING_DATASOURCE_USERNAME: postgres
-#      SPRING_DATASOURCE_PASSWORD: 1234567
-#      SPRING_LIQUIBASE_DROP-FIRST: false
-#      SPRING_PROFILES_ACTIVE: dev
+  user-management-app:
+#    image: ahmadaboualshamat/user-management
+    container_name: user-management-container
+    build: .
+    ports:
+      - "8080:8080"
+    deploy:
+      replicas: 1
+#    expose:
+#      - 8080
+    restart: always
+    depends_on:
+      - db
+    environment:
+#      spring.datasource.url: jdbc:postgresql://db:5435/com_user_management3?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+#      spring.datasource.username: com_user_management3
+#      spring.datasource.password: 123456
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/com_user_management_docker
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234567
+      SPRING_LIQUIBASE_DROP-FIRST: false
+      SPRING_PROFILES_ACTIVE: qa
 #  portal-frontend-app:
 #    build: ../portal-frontend
 #    container_name: portal-frontend-app-container
