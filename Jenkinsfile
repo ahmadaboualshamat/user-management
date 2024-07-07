@@ -30,6 +30,13 @@ pipeline {
                 }
             }
         }
+        stage('Build Push Image') {
+            steps{
+                script{
+                    bat 'docker push ahmadaboualshamat/user-management'
+                }
+            }
+        }
 //         stage('Push Image to Docker Hup') {
 //             steps{
 //                 script{
@@ -54,17 +61,17 @@ pipeline {
                 }
             }
         }
-        stage('Push Image to Docker Hup') {
-                    steps{
-                        script{
-                            // withCredentials([string(credentialsId: 'dockerhub_pwd_new', variable: 'docker_hub_var_new')]) {
-                            // //withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
-                            //     bat 'docker login -u ahmadaboualshamat -p ${docker_hub_var_new}'
-                            // }
-        //                     bat 'docker run -e "SPRING_PROFILES_ACTIVE=qa" -e "DATABASE_HOST=db" -p 8000:8080 ahmadaboualshamat/user-management:latest '
-                            bat 'docker-compose push'
-                        }
-                    }
-                }
-    }
+//         stage('Push Image to Docker Hup') {
+//                     steps{
+//                         script{
+//                             // withCredentials([string(credentialsId: 'dockerhub_pwd_new', variable: 'docker_hub_var_new')]) {
+//                             // //withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
+//                             //     bat 'docker login -u ahmadaboualshamat -p ${docker_hub_var_new}'
+//                             // }
+//         //                     bat 'docker run -e "SPRING_PROFILES_ACTIVE=qa" -e "DATABASE_HOST=db" -p 8000:8080 ahmadaboualshamat/user-management:latest '
+//                             bat 'docker-compose push'
+//                         }
+//                     }
+//                 }
+//     }
 }
