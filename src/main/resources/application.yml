@@ -1,4 +1,6 @@
 spring:
+#  profiles:
+#    active: dev
   application:
     name: user-management
   liquibase:
@@ -8,10 +10,10 @@ spring:
     database-change-log-table: DB_CHANGE_LOG
     database-change-log-lock-table: DB_CHANGE_LOG_LOCK
     drop-first: false
-  datasource:
-    url: jdbc:postgresql://localhost:5432/com_user_management
-    username: com_user_management
-    password: 123456
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/com_user_management_docker
+#    username: postgres
+#    password: 1234567
   jpa:
     show-sql: true
     properties:
@@ -20,6 +22,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         ddl-auto: update
         format_sql: true
+    generate-ddl: true
 
 web:
   cors:
@@ -29,7 +32,6 @@ web:
     allowed-headers: "Requestor-Type"
     exposed-headers: "X-Get-Header"
 
-tablespace: com_user_management_ts
 logging:
   level:
     root: info
@@ -44,4 +46,4 @@ logging:
               BasicBinder: TRACE
 
 #server:
-#  port: 8081
+#  port: 8080
