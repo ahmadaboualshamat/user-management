@@ -27,20 +27,8 @@ services:
     depends_on:
       - db
     environment:
-#      spring.datasource.url: jdbc:postgresql://db:5435/com_user_management3?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
-#      spring.datasource.username: com_user_management3
-#      spring.datasource.password: 123456
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/com_user_management_docker
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 1234567
       SPRING_LIQUIBASE_DROP-FIRST: false
       SPRING_PROFILES_ACTIVE: qa
-#  portal-frontend-app:
-#    build: ../portal-frontend
-#    container_name: portal-frontend-app-container
-#    ports:
-#      - "3000:3000"
-#    depends_on:
-#      - user-management-app
-#    stdin_open: true
-#    tty: true

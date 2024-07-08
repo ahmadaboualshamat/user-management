@@ -1,5 +1,5 @@
 spring:
   datasource:
-    url: jdbc:postgresql://${DATABASE_HOST}:5432/com_user_management_docker
-    username: postgres
-    password: 1234567
+    url: jdbc:postgresql://${DATABASE_HOST}:5432/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}

@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-management
+spec:
+  selector:
+    matchLabels:
+      app: user-management
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: user-management
+    spec:
+      containers:
+        - name: user-management
+          image: ahmadaboualshamat/user-management
+          imagePullPolicy: IfNotPresent
+#          restartPolicy: always
+          ports:
+            - containerPort: 8080
+          env: # Setting Enviornmental Variables
+            - name: SPRING_PROFILES_ACTIVE
+              value: qa
+            - name: DATABASE_HOST   # Setting Database host address from configMap
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-configmap
+                  key: host
+
+            - name: DB_NAME  # Setting Database name from configMap
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-configmap
+                  key: name
+
+            - name: DB_USERNAME  # Setting Database username from Secret
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_user
+
+            - name: DB_PASSWORD # Setting Database password from Secret
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: postgres_password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-management-service
+spec:
+  selector:
+    app: user-management
+  ports:
+    - protocol: "TCP"
+      port: 8080 # port of service inside the cluster
+      targetPort: 8080 # port exposed by this service
+  type: NodePort # type of service
