@@ -49,19 +49,7 @@ pipeline {
 //                 }
 //             }
 //         }
-//         stage('Deploy using Docker Compose') {
-//             steps{
-//                 script{
-//                     // withCredentials([string(credentialsId: 'dockerhub_pwd_new', variable: 'docker_hub_var_new')]) {
-//                     // //withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
-//                     //     bat 'docker login -u ahmadaboualshamat -p ${docker_hub_var_new}'
-//                     // }
-// //                     bat 'docker run -e "SPRING_PROFILES_ACTIVE=qa" -e "DATABASE_HOST=db" -p 8000:8080 ahmadaboualshamat/user-management:latest '
-//                     bat 'docker-compose up -d'
-//                 }
-//             }
-//         }
-        stage('Deploy using Kubernetes') {
+        stage('Deploy using Docker Compose') {
             steps{
                 script{
                     // withCredentials([string(credentialsId: 'dockerhub_pwd_new', variable: 'docker_hub_var_new')]) {
@@ -69,13 +57,25 @@ pipeline {
                     //     bat 'docker login -u ahmadaboualshamat -p ${docker_hub_var_new}'
                     // }
 //                     bat 'docker run -e "SPRING_PROFILES_ACTIVE=qa" -e "DATABASE_HOST=db" -p 8000:8080 ahmadaboualshamat/user-management:latest '
-                    bat 'kubectl apply -f k8s-configMap.yml'
-                    bat 'kubectl apply -f k8s-secrets.yml'
-                    bat 'kubectl apply -f k8s-db-deployment.yml'
-                    bat 'kubectl apply -f k8s-deployment.yml'
+                    bat 'docker-compose up -d'
                 }
             }
         }
+//         stage('Deploy using Kubernetes') {
+//             steps{
+//                 script{
+//                     // withCredentials([string(credentialsId: 'dockerhub_pwd_new', variable: 'docker_hub_var_new')]) {
+//                     // //withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
+//                     //     bat 'docker login -u ahmadaboualshamat -p ${docker_hub_var_new}'
+//                     // }
+// //                     bat 'docker run -e "SPRING_PROFILES_ACTIVE=qa" -e "DATABASE_HOST=db" -p 8000:8080 ahmadaboualshamat/user-management:latest '
+//                     bat 'kubectl apply -f k8s-configMap.yml'
+//                     bat 'kubectl apply -f k8s-secrets.yml'
+//                     bat 'kubectl apply -f k8s-db-deployment.yml'
+//                     bat 'kubectl apply -f k8s-deployment.yml'
+//                 }
+//             }
+//         }
 //         stage('Push Image to Docker Hup') {
 //                     steps{
 //                         script{
